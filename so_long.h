@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chales <chales@student.42.fr>              +#+  +:+       +#+        */
+/*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:38:21 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/10 04:55:05 by chales           ###   ########.fr       */
+/*   Updated: 2023/02/10 18:01:24 by plopes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_type
 
 typedef struct map
 {
+	int			fd;
 	int			height;
 	int			width;
 	char		**map;
@@ -81,8 +82,15 @@ int		ispath(t_map *map, int x, int y);
 int		path(t_map *map);
 int		isafe(int x, int y, t_map *map);
 void	mapcopy(t_map *map);
-int		close_win(int key, t_vars *vars);
+void	close_win(t_vars *vars);
 void	print_image(void *image, int x, int y, t_vars *vars);
-int	    keyhook(int key, t_vars *vars);
+int		keyhook(int key, t_vars *vars);
+void	make_image(t_vars *vars);
+void	move_right(t_vars	*vars);
+void	move_up(t_vars	*vars);
+void	move_down(t_vars	*vars);
+void	move_left(t_vars	*vars);
+void	create_win(void);
+char	**map(char	*argv);
 
 #endif

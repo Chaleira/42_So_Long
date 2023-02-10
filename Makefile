@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chales <chales@student.42.fr>              +#+  +:+       +#+         #
+#    By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 23:05:41 by plopes-c          #+#    #+#              #
-#    Updated: 2023/02/10 04:58:57 by chales           ###   ########.fr        #
+#    Updated: 2023/02/10 18:09:29 by plopes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,4 +42,4 @@ fclean:
 re:				fclean $(NAME)
 
 run:			all
-				./so_long				
+				./so_long test.txt
