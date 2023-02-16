@@ -6,7 +6,7 @@
 #    By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 23:05:41 by plopes-c          #+#    #+#              #
-#    Updated: 2023/02/10 18:09:29 by plopes-c         ###   ########.fr        #
+#    Updated: 2023/02/16 18:33:27 by plopes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS = *.c utils/*.c
 
 RM = rm -fr
 
-CFLAGS =
+CFLAGS = -Wall -Wextra -Werror
 
 MLX_FLAGS = -Lmlx_linux -lXext -lX11 -lm -lz
 
