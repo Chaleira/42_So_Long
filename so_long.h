@@ -6,7 +6,7 @@
 /*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:38:21 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/16 19:28:32 by plopes-c         ###   ########.fr       */
+/*   Updated: 2023/02/17 17:26:22 by plopes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_PCE
 {
 	int	p;
 	int	c;
+	int	cc;
 	int	e;
 	int	move_count;
 	int	px;
@@ -96,8 +97,8 @@ int		ispath(t_vars *vars, int x, int y);
 int		path(t_vars *vars);
 int		isafe(int x, int y, t_map *map);
 void	mapcopy(t_vars *map);
-void	close_win(t_vars *vars);
-void	print_image(t_vars *vars);
+int		close_win(t_vars *vars);
+void	print_image(t_vars *vars, int key);
 int		keyhook(int key, t_vars *vars);
 void	make_image(t_vars *vars);
 void	create_win(t_vars *vars);
@@ -108,6 +109,6 @@ void	background(t_vars *vars);
 void	walls(t_vars *vars);
 void	collect(t_vars *vars);
 void	exit_game(t_vars *vars);
-int		error(t_vars *vars, int x, int y, char c, char *str);
+int		error(t_vars *vars, int x, int y, char *str);
 
 #endif

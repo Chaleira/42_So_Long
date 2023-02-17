@@ -6,7 +6,7 @@
 /*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:30:11 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/16 19:45:00 by plopes-c         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:52:59 by plopes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	checkwall(t_vars *vars)
 				ft_printf("Error\nNot All Walls Are The Same Size\n");
 				return (0);
 			}
-			if (!error(vars, x, y, '1', "Error!\nMap Must Be Closed By Walls"))
+			if (!error(vars, x, y, "Error!\nMap Must Be Closed By Walls"))
 				return (0);
 			x++;
 		}

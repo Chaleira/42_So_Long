@@ -6,17 +6,18 @@
 /*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 17:13:02 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/16 20:03:25 by plopes-c         ###   ########.fr       */
+/*   Updated: 2023/02/17 17:26:41 by plopes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	close_win(t_vars *vars)
+int	close_win(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);
 	exit(0);
+	return (0);
 }
 
 void	create_win(t_vars *vars)
@@ -26,8 +27,9 @@ void	create_win(t_vars *vars)
 	vars->win_w = (vars->map.width + 1) * 64;
 	vars->win = mlx_new_window(vars->mlx, vars->win_w, vars->win_h, "windoh");
 	make_image(vars);
-	print_image(vars);
+	print_image(vars, 65364);
 	mlx_key_hook(vars->win, keyhook, vars);
+	mlx_hook(vars->win, 17, 1L << 17, close_win, vars);
 	mlx_loop(vars->mlx);
 }
 
@@ -51,11 +53,12 @@ void	make_image(t_vars *vars)
 			"sprites/exit.xpm", &vars->img.w, &vars->img.h);
 }
 
-int	error(t_vars *vars, int x, int y, char c, char *str)
+int	error(t_vars *vars, int x, int y, char *str)
 {
-	if ((vars->map.map[0][x] != c 
-		|| vars->map.map[vars->map.height][x] != c) || vars->map.map[y][0] != c
-		|| vars->map.map[y][vars->map.width] != c)
+	if ((vars->map.map[0][x] != '1'
+		|| vars->map.map[vars->map.height][x] != '1')
+		|| vars->map.map[y][0] != '1'
+		|| vars->map.map[y][vars->map.width] != '1')
 	{
 		ft_printf("%s\n", str);
 		return (0);

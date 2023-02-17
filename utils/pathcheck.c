@@ -6,7 +6,7 @@
 /*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:18:41 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/16 19:57:13 by plopes-c         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:54:39 by plopes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int	count_pce(t_vars *vars, int x, int y)
 	if (vars->map.map[y][x] != 'P' && vars->map.map[y][x] != 'C'
 		&& vars->map.map[y][x] != 'E'
 		&& vars->map.map[y][x] != '1' && vars->map.map[y][x] != '0')
-		{
-			ft_printf("Error\nInvalid Characters\n");
-			return (0);
-		}
+	{
+		ft_printf("Error\nInvalid Characters\n");
+		return (0);
+	}
 	if (vars->map.map[y][x] == 'P')
 	{
 		vars->map.pce.px = x;
