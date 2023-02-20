@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chales <chales@student.42.fr>              +#+  +:+       +#+        */
+/*   By: chaleira <chaleira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:15:56 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/17 22:20:40 by chales           ###   ########.fr       */
+/*   Updated: 2023/02/20 10:48:05 by chaleira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	check_move(t_vars *vars, int x, int y)
 		vars->map.pce.px = x;
 		vars->map.pce.py = y;
 		vars->map.pce.move_count++;
-		ft_printf("%d\n", vars->map.pce.move_count);
 		return (1);
 	}
 	return (0);

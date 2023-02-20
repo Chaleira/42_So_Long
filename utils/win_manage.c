@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_manage.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chaleira <chaleira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 17:13:02 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/17 17:26:41 by plopes-c         ###   ########.fr       */
+/*   Updated: 2023/02/20 10:46:32 by chaleira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ void	create_win(t_vars *vars)
 	vars->mlx = mlx_init();
 	vars->win_h = (vars->map.height + 1) * 64;
 	vars->win_w = (vars->map.width + 1) * 64;
-	vars->win = mlx_new_window(vars->mlx, vars->win_w, vars->win_h, "windoh");
+	vars->win = mlx_new_window(vars->mlx, vars->win_w, vars->win_h, "so_long");
 	make_image(vars);
 	print_image(vars, 65364);
-	mlx_key_hook(vars->win, keyhook, vars);
+	mlx_hook(vars->win, 2, 1L << 0, keyhook, vars);
 	mlx_hook(vars->win, 17, 1L << 17, close_win, vars);
+	mlx_hook(vars->win, 25, 1L << 18, keyhook, vars);
 	mlx_loop(vars->mlx);
 }
 
@@ -64,4 +65,27 @@ int	error(t_vars *vars, int x, int y, char *str)
 		return (0);
 	}
 	return (1);
+}
+
+void	counter(t_vars *vars)
+{
+	t_var	var;
+
+	var.i = 15;
+	var.j = 20;
+	while (var.i < 53)
+	{
+		while (var.j < 150)
+		{
+			mlx_pixel_put(vars->mlx, vars->win, var.j, var.i, 0xFFFFFF);
+			var.j++;
+		}
+		var.j = 20;
+		var.i++;
+	}
+	if (vars->map.pce.c == 0)
+		exit_game(vars);
+	mlx_string_put(vars->mlx, vars->win, 28, 45, 0xff0000, "Collect Count: ");
+	mlx_string_put(vars->mlx, vars->win, 120, 45, 0xff0000,
+		ft_itoa(vars->map.pce.c));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chaleira <chaleira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:38:21 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/17 17:26:22 by plopes-c         ###   ########.fr       */
+/*   Updated: 2023/02/20 10:29:16 by chaleira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,6 @@ void	walls(t_vars *vars);
 void	collect(t_vars *vars);
 void	exit_game(t_vars *vars);
 int		error(t_vars *vars, int x, int y, char *str);
+void	counter(t_vars *vars);
 
 #endif

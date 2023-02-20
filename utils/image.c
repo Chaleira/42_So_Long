@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chaleira <chaleira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 17:04:48 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/17 17:31:03 by plopes-c         ###   ########.fr       */
+/*   Updated: 2023/02/20 10:39:28 by chaleira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	print_image(t_vars *vars, int key)
 		mlx_put_image_to_window(vars->mlx, vars->win,
 			vars->img.type.player.left,
 			vars->map.pce.px * 64, vars->map.pce.py * 64);
-	if (vars->map.pce.c == 0)
-		exit_game(vars);
 	mlx_string_put(vars->mlx, vars->win, 28, 30, 0xff0000, "Move Count: ");
 	mlx_string_put(vars->mlx, vars->win, 100, 30, 0xff0000,
 		ft_itoa(vars->map.pce.move_count));
@@ -79,21 +77,7 @@ void	walls(t_vars *vars)
 		var.y++;
 		var.x = 0;
 	}
-	var.i = 15;
-	var.j = 20;
-	while (var.i < 53)
-	{
-		while (var.j < 150)
-		{
-			mlx_pixel_put(vars->mlx, vars->win, var.j, var.i, 0xFFFFFF);
-			var.j++;
-		}
-		var.j = 20;
-		var.i++;
-	}
-	mlx_string_put(vars->mlx, vars->win, 28, 45, 0xff0000, "Collect Count: ");
-	mlx_string_put(vars->mlx, vars->win, 120, 45, 0xff0000,
-		ft_itoa(vars->map.pce.c));
+	counter(vars);
 }
 
 void	collect(t_vars *vars)
