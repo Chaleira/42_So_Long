@@ -6,7 +6,7 @@
 /*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:54:15 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/24 10:58:34 by plopes-c         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:19:32 by plopes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	checkwallsize(t_vars *vars)
 {
 	int	y;
 
-	y = 1;
-	while (y <= vars->map.height)
+	y = 0;
+	while (y < vars->map.height)
 	{
-		if ((ft_sl_strlen(vars->map.map[y]) - 1) != vars->map.width)
+		if ((ft_sl_strlen(vars->map.map[y])) != vars->map.width)
 		{
 			ft_printf("Error!\nNot All Walls Are The Same Size\n");
 			return (0);
@@ -35,13 +35,10 @@ int	checkwall(t_vars *vars)
 	int	y;
 
 	x = 0;
-	y = 1;
-	vars->map.width = ft_sl_strlen(vars->map.map[0]) - 1;
-	if (!checkwallsize(vars))
-		return (0);
-	while (y <= vars->map.height)
+	y = 0;
+	while (y < vars->map.height)
 	{
-		while (x <= vars->map.width)
+		while (x < vars->map.width)
 		{
 			if (!error(vars, x, y, "Error!\nMap Must Be Closed By Walls"))
 				return (0);
@@ -64,9 +61,9 @@ int	check_pce(t_vars *vars)
 	vars->map.pce.p = 0;
 	vars->map.pce.c = 0;
 	vars->map.pce.e = 0;
-	while (var.y <= vars->map.height)
+	while (var.y < vars->map.height)
 	{
-		while (var.x <= vars->map.width)
+		while (var.x < vars->map.width)
 		{
 			if (!count_pce(vars, var.x, var.y))
 				return (0);

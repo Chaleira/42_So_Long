@@ -6,7 +6,7 @@
 /*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:38:21 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/24 11:10:32 by plopes-c         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:29:54 by plopes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,16 @@ typedef struct s_type
 
 typedef struct s_PCE
 {
-	int	p;
-	int	c;
-	int	cc;
-	int	e;
-	int	move_count;
-	int	px;
-	int	py;
-	int	ex;
-	int	ey;
+	int		p;
+	int		c;
+	int		cc;
+	int		e;
+	int		move_count;
+	char	*str_count;
+	int		px;
+	int		py;
+	int		ex;
+	int		ey;
 }			t_PCE;
 
 typedef struct s_img
@@ -89,8 +90,8 @@ typedef struct s_vars
 	t_img	img;
 }				t_vars;
 
-char	**map(char	*argv, t_vars *vars);
-char	**get_matrix(int fd, char *argv, t_vars *vars);
+int		map(char	*argv, t_vars *vars);
+int		get_matrix(int fd, char *argv, t_vars *vars);
 void	mapcopy(t_vars *map);
 int		ispath(t_vars *vars, int x, int y);
 int		path(t_vars *vars);
@@ -117,5 +118,9 @@ void	create_win(t_vars *vars);
 
 int		keyhook(int key, t_vars *vars);
 int		check_move(t_vars *vars, int x, int y);
+
+void	free_map(char **map);
+void	destroy_img(t_vars *vars);
+int		free_str(int fd);
 
 #endif

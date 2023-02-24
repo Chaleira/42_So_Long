@@ -6,7 +6,7 @@
 /*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:58:51 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/24 11:01:14 by plopes-c         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:14:57 by plopes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	collect(t_vars *vars)
 
 	var.x = 0;
 	var.y = 0;
-	while (var.y <= vars->map.height)
+	while (var.y < vars->map.height)
 	{
-		while (var.x <= vars->map.width)
+		while (var.x < vars->map.width)
 		{
 			if (vars->map.mapcpy[var.y][var.x] == 'C')
 				mlx_put_image_to_window(vars->mlx, vars->win,
@@ -39,9 +39,9 @@ void	walls(t_vars *vars)
 
 	var.x = 0;
 	var.y = 0;
-	while (var.y <= vars->map.height)
+	while (var.y < vars->map.height)
 	{
-		while (var.x <= vars->map.width)
+		while (var.x < vars->map.width)
 		{
 			if (vars->map.mapcpy[var.y][var.x] == '1')
 				mlx_put_image_to_window(vars->mlx, vars->win,
@@ -61,9 +61,9 @@ void	background(t_vars *vars)
 
 	var.x = 0;
 	var.y = 0;
-	while (var.x <= vars->win_w)
+	while (var.x < vars->win_w)
 	{
-		while (var.y <= vars->win_h)
+		while (var.y < vars->win_h)
 		{
 			mlx_put_image_to_window(vars->mlx,
 				vars->win, vars->img.type.ground, var.x, var.y);
@@ -79,6 +79,7 @@ void	print_image(t_vars *vars, int key)
 	mlx_clear_window(vars->mlx, vars->win);
 	background (vars);
 	walls(vars);
+	vars->map.pce.str_count = ft_itoa(vars->map.pce.move_count);
 	collect(vars);
 	if (key == 65364)
 		mlx_put_image_to_window(vars->mlx, vars->win,
@@ -98,7 +99,8 @@ void	print_image(t_vars *vars, int key)
 			vars->map.pce.px * 64, vars->map.pce.py * 64);
 	mlx_string_put(vars->mlx, vars->win, 28, 30, 0xff0000, "Move Count: ");
 	mlx_string_put(vars->mlx, vars->win, 100, 30, 0xff0000,
-		ft_itoa(vars->map.pce.move_count));
+		vars->map.pce.str_count);
+	free (vars->map.pce.str_count);
 }
 
 void	make_image(t_vars *vars)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaleira <chaleira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:15:56 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/20 10:48:05 by chaleira         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:27:06 by plopes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_move(t_vars *vars, int x, int y)
 	x += vars->map.pce.px;
 	y += vars->map.pce.py;
 	if (vars->map.mapcpy[y][x] == 'E' && vars->map.pce.c == 0)
-		exit(0);
+		close_win(vars);
 	if (vars->map.mapcpy[y][x] != '1')
 	{
 		if (vars->map.mapcpy[y][x] == 'C')
@@ -51,7 +51,7 @@ int	keyhook(int key, t_vars *vars)
 
 int	main(int argc, char *argv[])
 {
-	t_vars	vars;
+	static t_vars	vars;
 
 	vars.map.pce.move_count = 0;
 	vars.map.pce.cc = 0;
@@ -59,6 +59,11 @@ int	main(int argc, char *argv[])
 	if (map(argv[1], &vars))
 		create_win(&vars);
 	else
-		exit (0);
+	{
+		free_map(vars.map.map);
+		if (vars.map.mapcpy)
+			free_map(vars.map.mapcpy);
+	}
+	exit(0);
 	return (0);
 }
