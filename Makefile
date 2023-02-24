@@ -6,7 +6,7 @@
 #    By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 23:05:41 by plopes-c          #+#    #+#              #
-#    Updated: 2023/02/24 17:24:43 by plopes-c         ###   ########.fr        #
+#    Updated: 2023/02/24 18:28:48 by plopes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,3 @@ fclean:
 				@$(RM) $(NAME)
 				
 re:				fclean $(NAME)
-
-run:			all
-				./so_long map.ber
-
-valgrind:			all
-				valgrind --leak-check=full --show-leak-kinds=all ./so_long map.ber

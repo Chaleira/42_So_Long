@@ -6,7 +6,7 @@
 /*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:58:51 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/24 17:14:57 by plopes-c         ###   ########.fr       */
+/*   Updated: 2023/02/24 18:26:17 by plopes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	background(t_vars *vars)
 
 void	print_image(t_vars *vars, int key)
 {
-	mlx_clear_window(vars->mlx, vars->win);
 	background (vars);
 	walls(vars);
 	vars->map.pce.str_count = ft_itoa(vars->map.pce.move_count);
