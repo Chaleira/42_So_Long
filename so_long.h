@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaleira <chaleira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:38:21 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/20 10:29:16 by chaleira         ###   ########.fr       */
+/*   Updated: 2023/02/24 11:10:32 by plopes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,27 +89,33 @@ typedef struct s_vars
 	t_img	img;
 }				t_vars;
 
-int		ft_sl_strlen(char *s);
-int		checkwall(t_vars *vars);
+char	**map(char	*argv, t_vars *vars);
 char	**get_matrix(int fd, char *argv, t_vars *vars);
-int		check_pce(t_vars *vars);
+void	mapcopy(t_vars *map);
 int		ispath(t_vars *vars, int x, int y);
 int		path(t_vars *vars);
-int		isafe(int x, int y, t_map *map);
-void	mapcopy(t_vars *map);
-int		close_win(t_vars *vars);
-void	print_image(t_vars *vars, int key);
-int		keyhook(int key, t_vars *vars);
-void	make_image(t_vars *vars);
-void	create_win(t_vars *vars);
-char	**map(char	*argv, t_vars *vars);
+
+int		checkwallsize(t_vars *vars);
+int		checkwall(t_vars *vars);
+int		check_pce(t_vars *vars);
 int		count_pce(t_vars *vars, int x, int y);
 int		pce_aux(t_vars	*vars);
-void	background(t_vars *vars);
-void	walls(t_vars *vars);
-void	collect(t_vars *vars);
+
 void	exit_game(t_vars *vars);
+int		ft_sl_strlen(char *s);
 int		error(t_vars *vars, int x, int y, char *str);
 void	counter(t_vars *vars);
+
+void	collect(t_vars *vars);
+void	background(t_vars *vars);
+void	walls(t_vars *vars);
+void	print_image(t_vars *vars, int key);
+void	make_image(t_vars *vars);
+
+int		close_win(t_vars *vars);
+void	create_win(t_vars *vars);
+
+int		keyhook(int key, t_vars *vars);
+int		check_move(t_vars *vars, int x, int y);
 
 #endif

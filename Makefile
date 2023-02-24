@@ -6,7 +6,7 @@
 #    By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 23:05:41 by plopes-c          #+#    #+#              #
-#    Updated: 2023/02/16 18:33:27 by plopes-c         ###   ########.fr        #
+#    Updated: 2023/02/24 10:32:56 by plopes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,4 +42,4 @@ fclean:
 re:				fclean $(NAME)
 
 run:			all
-				./so_long test.txt
+				./so_long map.ber

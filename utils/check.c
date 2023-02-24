@@ -1,16 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pathcheck.c                                        :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 15:18:41 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/17 16:54:39 by plopes-c         ###   ########.fr       */
+/*   Created: 2023/02/24 10:54:15 by plopes-c          #+#    #+#             */
+/*   Updated: 2023/02/24 10:58:34 by plopes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+int	checkwallsize(t_vars *vars)
+{
+	int	y;
+
+	y = 1;
+	while (y <= vars->map.height)
+	{
+		if ((ft_sl_strlen(vars->map.map[y]) - 1) != vars->map.width)
+		{
+			ft_printf("Error!\nNot All Walls Are The Same Size\n");
+			return (0);
+		}
+		y++;
+	}
+	return (1);
+}
+
+int	checkwall(t_vars *vars)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 1;
+	vars->map.width = ft_sl_strlen(vars->map.map[0]) - 1;
+	if (!checkwallsize(vars))
+		return (0);
+	while (y <= vars->map.height)
+	{
+		while (x <= vars->map.width)
+		{
+			if (!error(vars, x, y, "Error!\nMap Must Be Closed By Walls"))
+				return (0);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	if (!check_pce(vars))
+		return (0);
+	return (1);
+}
 
 int	check_pce(t_vars *vars)
 {
@@ -54,42 +97,6 @@ int	count_pce(t_vars *vars, int x, int y)
 		vars->map.pce.c++;
 	if (vars->map.map[y][x] == 'E')
 		vars->map.pce.e++;
-	return (1);
-}
-
-int	ispath(t_vars *vars, int x, int y)
-{
-	if (!(x >= 0 && x < vars->map.width && y >= 0 && y < vars->map.height
-			&& vars->map.map[y][x] != '1' && vars->map.map[y][x] != '-'))
-		return (0);
-	vars->map.map[y][x] = '-';
-	if (ispath(vars, x + 1, y) || ispath(vars, x - 1, y)
-		|| ispath(vars, x, y + 1) || ispath(vars, x, y - 1))
-		return (1);
-	return (0);
-}
-
-int	path(t_vars *vars)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (y <= vars->map.height)
-	{
-		while (x <= vars->map.width)
-		{
-			if (vars->map.map[y][x] == 'E' || vars->map.map[y][x] == 'C')
-			{	
-				ft_printf("Error!\nNo Path To Exit Or Collectible\n");
-				return (0);
-			}
-			x++;
-		}
-		x = 0;
-		y++;
-	}
 	return (1);
 }
 
