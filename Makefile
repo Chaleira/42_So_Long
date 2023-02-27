@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+         #
+#    By: chales <chales@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 23:05:41 by plopes-c          #+#    #+#              #
-#    Updated: 2023/02/24 18:28:48 by plopes-c         ###   ########.fr        #
+#    Updated: 2023/02/27 14:59:06 by chales           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ LIBFT = libft/libft.a
 
 MLX = minilibx/libmlx.a
 
-SRCS = *.c utils/*.c
+SRCS =	so_long.c	utils/check.c	utils/map.c		utils/free.c	utils/image.c \
+		utils/utils.c	utils/win.c
+
+OBJS = $(SRCS:.c=.o)
 
 RM = rm -fr
 
@@ -26,17 +29,16 @@ MLX_FLAGS = -Lmlx_linux -lXext -lX11 -lm -lz
 
 all: $(NAME)
 
-$(NAME):		$(SRCS)
+$(NAME):		$(OBJS)
 				@make bonus -s -C libft
-				@make -s -C minilibx
-				@gcc $(CFLAGS) $(SRCS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
+				@gcc $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
 
 clean: 
+				$(RM) $(OBJS)
 				@make clean -s -C libft
 
-fclean:			
+fclean:			clean
 				@make fclean -s -C libft
-				@make clean -s -C minilibx
 				@$(RM) $(NAME)
 				
 re:				fclean $(NAME)
