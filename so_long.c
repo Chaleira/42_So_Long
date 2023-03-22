@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chales <chales@student.42.fr>              +#+  +:+       +#+        */
+/*   By: plopes-c <plopes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:15:56 by plopes-c          #+#    #+#             */
-/*   Updated: 2023/02/27 15:15:08 by chales           ###   ########.fr       */
+/*   Updated: 2023/03/22 20:18:16 by plopes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ int	main(int argc, char *argv[])
 	if (argc != 2 || argv[1][ft_strlen(argv[1]) - 1] != 'r'
 		|| argv[1][ft_strlen(argv[1]) - 2] != 'e'
 		|| argv[1][ft_strlen(argv[1]) - 3] != 'b'
-		|| argv[1][ft_strlen(argv[1]) - 4] != '.')
+		|| argv[1][ft_strlen(argv[1]) - 4] != '.'
+		|| argv[1][0] == '.')
 	{
 		ft_printf("Invalid Map Format!\n");
 		return (0);
